@@ -27,7 +27,7 @@ class TestColorField(TestCase):
 
     # ----------------------------------------------------------------------
     def test_set_value(self):
-        value = "#FFFFFF""
+        value = "#FFFFFF"
         self.assertIsNone(self.colorfield.set_value(value))
         value = "255"
         self.assertIsNone(self.colorfield.set_value(value))
