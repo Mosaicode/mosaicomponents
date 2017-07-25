@@ -15,8 +15,8 @@ class TestIconField(TestCase):
 
     # ----------------------------------------------------------------------
     def test_get_value(self):
-        #self.assertTrue(self.iconfield.get_value())
-        pass
+        self.assertTrue(self.iconfield.get_value())
+        #pass
 
     # ----------------------------------------------------------------------
     def test_set_value(self):

@@ -10,6 +10,8 @@ class TestFloatField(TestCase):
 
     def setUp(self):
         """Do the test basic setup."""
+	data = 1
+        self.floatfield = FloatField(data, self)
         data = {"label": ("Type"), "name":"type", "value": 13.05}
         self.floatfield = FloatField(data, self)
 
