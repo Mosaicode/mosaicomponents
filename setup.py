@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from glob import glob
 
 DISTUTILS_DEBUG = "True"
-
 
 try:
     from setuptools import setup, find_packages
@@ -30,11 +28,11 @@ setup(name='mosaicomponents',
       test_suite='test',
       packages=['mosaicomponents'],
       description='GUI components to develop Mosaicode',
-      author='Ouroboros',
-      author_email='cmagnobarbosa+harpia@gmail.com',
-      maintainer="Ouroboros",
-      maintainer_email="cmagnobarbosa+harpia@gmail.com",
+      author='Bits & Beads Research Lab',
+      author_email='mosaicode-dev@googlegroups.com',
+      maintainer='Bits & Beads Research Lab',
+      maintainer_email="mosaicode-dev@googlegroups.com",
       license="GNU GPL3",
-      url='http://ges.dcomp.ufsj.edu.br/index.php/ouroboros/',
+      url='http://mosaicode.github.io/',
       **config
       )
