@@ -115,3 +115,5 @@ debian/mosaicomponents\.prerm\.debhelper
 debian/mosaicomponents\.substvars
 
 debian/mosaicomponents\.triggers
+
+debian/files
