@@ -99,3 +99,21 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+\.idea/inspectionProfiles/
+
+\.idea/
+
+debian/mosaicomponents
+
+debian/debhelper-build-stamp
+
+debian/mosaicomponents\.postinst\.debhelper
+
+debian/mosaicomponents\.prerm\.debhelper
+
+debian/mosaicomponents\.substvars
+
+debian/mosaicomponents\.triggers
+
+debian/files
