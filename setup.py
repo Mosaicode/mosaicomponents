@@ -22,17 +22,21 @@ config['classifiers'] = [
 ]
 
 setup(name='mosaicomponents',
-      install_requires=['pip', 'Python>=2.7'],
-      version='1.0a7',
+      install_requires=[],
+      version='1.2',
       tests_require=['pytest'],
       test_suite='test',
       packages=['mosaicomponents'],
       description='GUI components to develop Mosaicode',
       author='Bits & Beads Research Lab',
       author_email='mosaicode-dev@googlegroups.com',
-      maintainer='Bits & Beads Research Lab',
+      maintainer="Bits & Beads Research Lab",
       maintainer_email="mosaicode-dev@googlegroups.com",
       license="GNU GPL3",
-      url='http://mosaicode.github.io/',
+
+      url='https://mosaicode.github.io', 
+      download_url = 'https://github.com/Mosaicode/mosaicode.git',
+      keywords = ['VLP', 'Blocks','Code Generation', 'Digital art'],  
+
       **config
       )
