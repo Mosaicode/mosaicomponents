@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from glob import glob
 
 DISTUTILS_DEBUG = "True"
-
 
 try:
     from setuptools import setup, find_packages
@@ -39,5 +37,6 @@ setup(name='mosaicomponents',
       url='https://mosaicode.github.io', 
       download_url = 'https://github.com/Mosaicode/mosaicode.git',
       keywords = ['VLP', 'Blocks','Code Generation', 'Digital art'],  
+
       **config
       )
