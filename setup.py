@@ -23,7 +23,7 @@ config['classifiers'] = [
 
 setup(name='mosaicomponents',
       install_requires=['pip', 'Python>=2.7'],
-      version='1.0a7',
+      version='1.3',
       tests_require=['pytest'],
       test_suite='test',
       packages=['mosaicomponents'],
