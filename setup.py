@@ -22,15 +22,17 @@ config['classifiers'] = [
 ]
 
 setup(name='mosaicomponents',
-      install_requires=['pip', 'Python>=2.7'],
-      version='1.3',
+
+      install_requires=[],
+      python_requires='>=2.7',
+      version='1.0.3.dev1',
       tests_require=['pytest'],
       test_suite='test',
       packages=['mosaicomponents'],
       description='GUI components to develop Mosaicode',
-      author='Bits & Beads Research Lab',
+      author='ALICE: Arts Lab in Interfaces, Computers, and Experiences',
       author_email='mosaicode-dev@googlegroups.com',
-      maintainer='Bits & Beads Research Lab',
+      maintainer='ALICE: Arts Lab in Interfaces, Computers, and Experiences',
       maintainer_email="mosaicode-dev@googlegroups.com",
       license="GNU GPL3",
       url='http://mosaicode.github.io/',
