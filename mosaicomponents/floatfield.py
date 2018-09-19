@@ -18,11 +18,11 @@ class FloatField(Field, Gtk.HBox):
         "label": "",
         "value": 0,
         "name": "",
-        "lower": 0,
+        "lower": -9223372036854775806,
         "upper": 9223372036854775807,
-        "step": 1,
-        "page_inc": 10,
-        "page_size": 10,
+        "step": 0.01,
+        "page_inc": 0.1,
+        "page_size": 0.1,
         "digits": 2
     }
 
@@ -43,11 +43,13 @@ class FloatField(Field, Gtk.HBox):
         self.label = Gtk.Label(self.data["label"])
         self.label.set_property("halign", Gtk.Align.START)
         self.add(self.label)
+        value = 0
 
         try:
             value = float(self.data["value"])
         except:
-            value = 0
+            pass
+
         adjustment = Gtk.Adjustment(value=value,
                                     lower=float(self.data["lower"]),
                                     upper=float(self.data["upper"]),
@@ -55,10 +57,12 @@ class FloatField(Field, Gtk.HBox):
                                     page_incr=float(self.data["page_inc"]),
                                     page_size=float(self.data["page_size"]))
 
-        self.field = Gtk.SpinButton()
-        self.field.set_adjustment(adjustment)
-        self.field.configure(adjustment, 0.0, float(self.data["digits"]))
+        self.field = Gtk.SpinButton.new(adjustment,
+                                    float(self.data["step"]),
+                                    float(self.data["digits"]))
+
         self.field.set_value(value)
+
         if event is not None:
             self.field.connect("changed", event)
             self.field.connect("value-changed", event)
