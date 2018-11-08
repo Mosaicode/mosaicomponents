@@ -10,7 +10,7 @@ from gi.repository import Gdk
 from mosaicomponents.field import Field
 
 
-class ColorField(Field, Gtk.HBox):
+class ColorField(Field):
     """
     This class contains methods related the ColorField class.
     """
@@ -27,27 +27,25 @@ class ColorField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, True)
 
         self.check_values()
+        self.create_label()
 
-        self.set_name(self.data["name"])
-        self.parent_window = None
-        self.event = event
-        self.set_value(self.data["value"])
-        self.label = Gtk.Label(self.data["label"])
-        self.format = self.data["format"]
-        self.add(self.label)
-        self.label.set_property("halign", Gtk.Align.START)
-
-        self.color_block = Gtk.DrawingArea()
-        self.color_block.modify_bg(Gtk.StateType.NORMAL, self.color)
-        self.add(self.color_block)
+        box = Gtk.HBox()
+        self.color_block = Gtk.Frame()
+        box.add(self.color_block)
 
         button = Gtk.Button.new_from_icon_name(
             "gtk-select-color", Gtk.IconSize.BUTTON)
         button.connect("clicked", self.on_choose_color)
-        self.add(button)
+        box.add(button)
+        self.add(box)
+
+        self.parent_window = None
+        self.event = event
+        self.set_value(self.data["value"])
+        self.format = self.data["format"]
+
         self.show_all()
 
     # --------------------------------------------------------------------------
@@ -102,12 +100,9 @@ class ColorField(Field, Gtk.HBox):
                 value = "rgba(" + vlist[0] + "," + vlist[1] + \
                         "," + vlist[2] + "," + vlist[3] + ")"
 
-        try:
-            color = Gdk.RGBA()
-            result = color.parse(value)
-            self.color = color.to_color()
-            self.color_block.modify_bg(Gtk.StateType.NORMAL, self.color)
-        except Exception as inst:
-            pass
+        color = Gdk.RGBA()
+        result = color.parse(value)
+        self.color = color.to_color()
+        self.color_block.modify_bg(Gtk.StateType.NORMAL, self.color)
 
 # -----------------------------------------------------------------------------

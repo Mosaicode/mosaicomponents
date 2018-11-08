@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class ComboField(Field, Gtk.HBox):
+class ComboField(Field):
     """
     This class contains methods related the ComboField class.
     """
@@ -24,15 +24,11 @@ class ComboField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, True)
 
         self.check_values()
-        self.set_name(self.data["name"])
-        self.value = self.data["value"]
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
+        self.create_label()
 
+        self.value = self.data["value"]
         self.field = Gtk.ComboBoxText()
         self.field.set_entry_text_column(0)
 

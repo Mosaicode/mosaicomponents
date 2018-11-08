@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class SaveFileField(Field, Gtk.HBox):
+class SaveFileField(Field):
     """
     This class contains methods related the SaveFileField class.
     """
@@ -24,17 +24,12 @@ class SaveFileField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, False)
 
         self.check_values()
-
-        self.set_name(self.data["name"])
+        self.create_label()
 
         self.file = self.data["value"]
         self.parent_window = None
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
 
         self.field = Gtk.Entry()
         self.field.set_text(self.file)

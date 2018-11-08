@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class StringField(Field, Gtk.HBox):
+class StringField(Field):
     """
     This class contains methods related the StringField class.
     """
@@ -24,14 +24,8 @@ class StringField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, True)
-
         self.check_values()
-
-        self.set_name(self.data["name"])
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
+        self.create_label()
 
         self.field = Gtk.Entry()
         self.field.set_text(self.data["value"])

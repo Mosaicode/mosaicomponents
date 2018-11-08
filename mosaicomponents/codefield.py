@@ -11,7 +11,7 @@ gi.require_version('GtkSource', '3.0')
 from gi.repository import GtkSource
 
 
-class CodeField(Field, Gtk.VBox):
+class CodeField(Field):
     """
     This class contains methods related the CodeField class.
     """
@@ -32,11 +32,9 @@ class CodeField(Field, Gtk.VBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.VBox.__init__(self)
 
         self.check_values()
-
-        self.set_name(self.data["name"])
+        self.create_label()
 
         self.set_homogeneous(False)
         self.set_spacing(10)
@@ -47,9 +45,6 @@ class CodeField(Field, Gtk.VBox):
 
         scrolled_window.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
 
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.pack_start(self.label, False, False, 0)
 
         lang_manager = GtkSource.LanguageManager()
         self.text_buffer = GtkSource.Buffer.new_with_language(
@@ -66,7 +61,7 @@ class CodeField(Field, Gtk.VBox):
 
         scrolled_window.add(self.field)
 
-        self.pack_start(scrolled_window, True, True, 0)
+        self.add(scrolled_window, True, True, 0)
         self.show_all()
 
     # --------------------------------------------------------------------------
