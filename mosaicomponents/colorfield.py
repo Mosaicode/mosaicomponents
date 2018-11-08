@@ -93,10 +93,10 @@ class ColorField(Field):
 
         if ":" in value:
             vlist = value.split(":")
-            if len(value_list) == 3:
+            if len(vlist) == 3:
                 value = "rgb(" + vlist[0] + "," + vlist[1] + \
                         "," + vlist[2] + ")"
-            if len(value_list) == 4:
+            if len(vlist) == 4:
                 value = "rgba(" + vlist[0] + "," + vlist[1] + \
                         "," + vlist[2] + "," + vlist[3] + ")"
 
