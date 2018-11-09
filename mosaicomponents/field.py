@@ -3,9 +3,12 @@
 """
 This module contains the Field class.
 """
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
 
-class Field(object):
+class Field(Gtk.VBox):
     """
     This class contains methods related the Field class.
     """
@@ -17,6 +20,10 @@ class Field(object):
         """
         This method is the constructor.
         """
+        Gtk.VBox.__init__(self, False)
+        self.set_margin_right(5)
+        self.set_margin_left(5)
+        self.set_margin_top(3)
         self.data = data
 
     # ----------------------------------------------------------------------
@@ -33,9 +40,18 @@ class Field(object):
         pass
 
     # ----------------------------------------------------------------------
+    def create_label(self):
+        self.label = Gtk.Label()
+        self.label.set_markup("<small>" + self.data["label"] + "</small>")
+        self.label.set_property("halign", Gtk.Align.START)
+        self.add(self.label)
+
+    # ----------------------------------------------------------------------
     def check_values(self):
         for key in self.get_configuration():
             if key in self.data:
                 continue
             else:
                 self.data[key] = self.get_configuration()[key]
+        self.set_name(self.data["name"])
+

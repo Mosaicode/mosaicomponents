@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class FloatField(Field, Gtk.HBox):
+class FloatField(Field):
     """
     This class contains methods related the FloatField class.
     """
@@ -34,15 +34,10 @@ class FloatField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, True)
 
         self.check_values()
+        self.create_label()
 
-        self.set_name(self.data["name"])
-
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
         value = 0
 
         try:

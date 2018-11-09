@@ -9,7 +9,7 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class CommentField(Field, Gtk.VBox):
+class CommentField(Field):
     """
     This class contains methods related the CommentField class.
     """
@@ -29,11 +29,9 @@ class CommentField(Field, Gtk.VBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.VBox.__init__(self)
 
         self.check_values()
-
-        self.set_name(self.data["name"])
+        self.create_label()
 
         self.set_homogeneous(False)
         self.set_spacing(10)
@@ -43,10 +41,6 @@ class CommentField(Field, Gtk.VBox):
         scrolled_window.set_min_content_width(self.data["width"])
 
         scrolled_window.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
-
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
 
         self.field = Gtk.TextView()
         self.field.set_left_margin(10)

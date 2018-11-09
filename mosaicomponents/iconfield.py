@@ -10,7 +10,7 @@ from gi.repository.GdkPixbuf import Pixbuf
 from mosaicomponents.field import Field
 
 
-class IconField(Field, Gtk.HBox):
+class IconField(Field):
     """
     This class contains methods related the IconField class.
     """
@@ -25,16 +25,12 @@ class IconField(Field, Gtk.HBox):
         if not isinstance(data, dict):
             return
         Field.__init__(self, data, event)
-        Gtk.HBox.__init__(self, True)
 
         self.check_values()
+        self.create_label()
 
-        self.set_name(self.data["name"])
         self.value = self.data["value"]
         self.values = []
-        self.label = Gtk.Label(self.data["label"])
-        self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
 
         self.liststore = Gtk.ListStore(Pixbuf, str)
         # List system stock icons
