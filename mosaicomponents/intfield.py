@@ -44,6 +44,7 @@ class IntField(Field):
                                     page_incr=int(self.data["page_inc"]),
                                     page_size=int(self.data["page_size"]))
         self.field = Gtk.SpinButton()
+        self.field.set_property("margin-left", 20)
         self.field.set_adjustment(adjustment)
         self.field.set_value(float(self.data["value"]))
 

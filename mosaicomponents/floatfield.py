@@ -55,7 +55,7 @@ class FloatField(Field):
         self.field = Gtk.SpinButton.new(adjustment,
                                     float(self.data["step"]),
                                     float(self.data["digits"]))
-
+        self.field.set_property("margin-left", 20)
         self.field.set_value(value)
 
         if event is not None:

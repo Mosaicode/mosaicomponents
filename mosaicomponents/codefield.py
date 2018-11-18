@@ -51,8 +51,8 @@ class CodeField(Field):
             lang_manager.get_language(self.data["language"]))
         self.field = GtkSource.View.new_with_buffer(self.text_buffer)
         self.field.set_show_line_numbers(True)
-        self.field.set_left_margin(10)
-        self.field.set_right_margin(10)
+        self.field.set_left_margin(2)
+        self.field.set_right_margin(2)
         self.field.get_buffer().set_text(self.data["value"])
 
         self.field.set_wrap_mode(Gtk.WrapMode.WORD)

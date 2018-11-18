@@ -45,6 +45,7 @@ class IconField(Field):
                 pass
 
         self.field = Gtk.ComboBox.new_with_model(self.liststore)
+        self.field.set_property("margin-left", 20)
 
         renderer = Gtk.CellRendererPixbuf()
         self.field.pack_start(renderer, False)
