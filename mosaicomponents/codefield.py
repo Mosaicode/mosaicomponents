@@ -61,7 +61,7 @@ class CodeField(Field):
 
         scrolled_window.add(self.field)
 
-        self.add(scrolled_window, True, True, 0)
+        self.pack_start(scrolled_window, True, True, 0)
         self.show_all()
 
     # --------------------------------------------------------------------------

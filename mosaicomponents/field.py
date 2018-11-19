@@ -44,7 +44,7 @@ class Field(Gtk.VBox):
         self.label = Gtk.Label()
         self.label.set_markup("<small>" + self.data["label"] + "</small>")
         self.label.set_property("halign", Gtk.Align.START)
-        self.add(self.label)
+        self.pack_start(self.label, False, False, 0)
 
     # ----------------------------------------------------------------------
     def check_values(self):
