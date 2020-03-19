@@ -32,6 +32,7 @@ class ColorField(Field):
         self.create_label()
 
         box = Gtk.HBox()
+        box.set_property("margin-left", 20)
         self.color_block = Gtk.Frame()
         box.add(self.color_block)
 

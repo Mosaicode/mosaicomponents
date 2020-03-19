@@ -9,12 +9,12 @@ from gi.repository import Gtk
 from mosaicomponents.field import Field
 
 
-class StringField(Field):
+class LabelField(Field):
     """
     This class contains methods related the StringField class.
     """
 
-    configuration = {"label": "", "value": "", "name": "", "maxlength": 0}
+    configuration = {"label": "", "value": "", "name": ""}
 
     # --------------------------------------------------------------------------
     def __init__(self, data, event):
@@ -27,12 +27,13 @@ class StringField(Field):
         self.check_values()
         self.create_label()
 
-        self.field = Gtk.Entry()
+        self.field = Gtk.Label()
+        self.field.set_property("halign", Gtk.Align.START)
         self.field.set_property("margin-left", 20)
-        self.field.set_text(self.data["value"])
-        self.field.set_property("max-length", int(self.data["maxlength"]))
-        if event is not None:
-            self.field.connect("changed", event)
+        value = "None"
+        if (self.data["value"] is not None):
+            value = self.data["value"]
+        self.field.set_text(value)
         self.add(self.field)
         self.show_all()
 

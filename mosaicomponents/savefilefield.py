@@ -31,15 +31,18 @@ class SaveFileField(Field):
         self.file = self.data["value"]
         self.parent_window = None
 
+        box = Gtk.HBox()
         self.field = Gtk.Entry()
+        self.field.set_property("margin-left", 20)
         self.field.set_text(self.file)
         if event is not None:
             self.field.connect("changed", event)
-        self.add(self.field)
+        box.pack_start(self.field, True, True, 0)
 
         button = Gtk.Button.new_from_icon_name("gtk-file", Gtk.IconSize.BUTTON)
         button.connect("clicked", self.on_choose_file)
-        self.add(button)
+        box.pack_start(button, False, False, 0)
+        self.add(box)
         self.show_all()
 
     # --------------------------------------------------------------------------

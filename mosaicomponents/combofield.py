@@ -30,6 +30,7 @@ class ComboField(Field):
 
         self.value = self.data["value"]
         self.field = Gtk.ComboBoxText()
+        self.field.set_property("margin-left", 20)
         self.field.set_entry_text_column(0)
 
         for value in self.data["values"]:
